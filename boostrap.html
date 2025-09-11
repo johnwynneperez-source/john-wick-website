@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body { background:#f8f9fa }
+    .section-title { color:#0d6efd;margin-top:24px }
+    td { vertical-align:top }
+    .topic-card { scroll-margin-top: 80px; } /* offset so header/nav doesn’t cover */
+    .topic-btn.active { background:#495057; color:#fff }
+  </style>
+</head>
+<body>
+
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">My Website</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <!-- Class Schedule -->
+    <h3 class="section-title">Class Schedule and Topics</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped text-center align-middle">
+        <thead class="table-success">
+          <tr>
+            <th>Day</th>
+            <th>Subject</th>
+            <th>Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mon/Wed</td>
+            <td>Programming Fundamentals</td>
+            <td>9:00 - 11:00</td>
+            <td>
+              <button class="btn btn-primary btn-sm">Edit</button>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Tue/Thu</td>
+            <td>Introduction to Databases</td>
+            <td>1:00 - 3:00</td>
+            <td>
+              <button class="btn btn-primary btn-sm">Edit</button>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td>Artificial Intelligence Basics</td>
+            <td>10:00 - 12:00</td>
+            <td>
+              <button class="btn btn-primary btn-sm">Edit</button>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <div class="container mt-4">
+    <h3 class="section-title">Topics and Content</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle text-center">
+        <thead class="table-success">
+          <tr>
+            <th>Topics</th>
+            <th>Content</th>
+            <th>Extra List</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- LEFT: buttons -->
+            <td style="width:28%">
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary topic-btn active" data-target="card-html">HTML Basics</button>
+                <button class="btn btn-outline-secondary topic-btn" data-target="card-css">CSS Styling</button>
+                <button class="btn btn-outline-secondary topic-btn" data-target="card-js">JavaScript Intro</button>
+                <button class="btn btn-outline-secondary topic-btn" data-target="card-python">Python Basics</button>
+              </div>
+            </td>
+
+            <!-- MIDDLE: scrollable content -->
+            <td style="width:44%">
+              <div id="content-area" style="max-height:400px; overflow-y:auto; padding:5px" class="text-start">
+                
+                <div id="card-html" class="card topic-card mb-3">
+                  <div class="card-body">
+                    <h4 class="fw-bold">HTML Basics</h4>
+                    <p>HTML gives web pages structure with tags like <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code>.</p>
+                  </div>
+                </div>
+
+                <div id="card-css" class="card topic-card mb-3">
+                  <div class="card-body">
+                    <h4 class="fw-bold">CSS Styling</h4>
+                    <p>CSS controls the look of the page — colors, layouts, and fonts.</p>
+                  </div>
+                </div>
+
+                <div id="card-js" class="card topic-card mb-3">
+                  <div class="card-body">
+                    <h4 class="fw-bold">JavaScript Intro</h4>
+                    <p>JavaScript makes pages interactive with events, animations, and logic.</p>
+                  </div>
+                </div>
+
+                <div id="card-python" class="card topic-card mb-3">
+                  <div class="card-body">
+                    <h4 class="fw-bold">Python Basics</h4>
+                    <p>Python is simple but powerful, used for logic, automation, and AI.</p>
+                  </div>
+                </div>
+
+              </div>
+            </td>
+
+            <!-- RIGHT: extra -->
+            <td style="width:28%">
+              <ul class="list-group">
+                <li class="list-group-item">Topic 1</li>
+                <li class="list-group-item">Topic 2</li>
+                <li class="list-group-item">Topic 3</li>
+                <li class="list-group-item">Topic 4</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="text-center text-white bg-dark py-3 mt-4">
+    © 2025 My Website | Built with Bootstrap ❤️
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const buttons = document.querySelectorAll('.topic-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // set active button style
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // scroll inside the content column
+        const id = btn.dataset.target;
+        const card = document.getElementById(id);
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
